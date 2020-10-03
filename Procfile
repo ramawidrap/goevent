@@ -1,1 +1,1 @@
-web: goevent
+web: ./goevent
