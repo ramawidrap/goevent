@@ -1,1 +1,1 @@
-web: ./goevent
+web: github.com/ramawidrap/goevent
