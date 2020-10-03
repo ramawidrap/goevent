@@ -9,6 +9,11 @@ import (
 	"github.com/ramawidrap/goevent/utils"
 )
 
+func HelloWorld(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode("Hello World")
+}
+
 func GetAllPerson(w http.ResponseWriter, r *http.Request) {
 	var (
 		person     model.Person

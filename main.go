@@ -11,6 +11,7 @@ import (
 
 func main() {
 	router := mux.NewRouter()
+	router.HandleFunc("/",controller.HelloWorld).Methods("GET")
 	router.HandleFunc("/user", controller.GetAllPerson).Methods("GET")
 	router.HandleFunc("/channel/create", controller.CreateChannel).Methods("POST")
 	router.HandleFunc("/channel/join",controller.JoinChannel).Methods("POST")
