@@ -1,1 +1,1 @@
-web: LearnGo
+web: goevent
