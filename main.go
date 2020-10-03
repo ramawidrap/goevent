@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
+	"os"
 	"github.com/gorilla/mux"
 	"github.com/ramawidrap/goevent/controller"
 )
@@ -20,8 +20,23 @@ func main() {
 	fmt.Println("Connected to port 1234")
 	log.Fatal(http.ListenAndServe(":1234", router))
 
-	err := http.ListenAndServe(":"+"8080", nil)
-	if err != nil {
-		panic(err)
+	port := GetPort()
+	log.Println("[-] Listening on...", port)
+    http.HandleFunc("/", func (res http.ResponseWriter, req *http.Request) {
+        fmt.Fprintln(res, "hello, world")
+    })
+
+    err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+    if err != nil {
+      panic(err)
+    }
+}
+
+func GetPort() string {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "4747"
+		log.Println("[-] No PORT environment variable detected. Setting to ", port)
 	}
+	return ":" + port
 }
