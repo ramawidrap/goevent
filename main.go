@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+
 	"github.com/gorilla/mux"
 	"github.com/ramawidrap/goevent/controller"
 )
@@ -22,14 +23,10 @@ func main() {
 
 	port := GetPort()
 	log.Println("[-] Listening on...", port)
-    http.HandleFunc("/", func (res http.ResponseWriter, req *http.Request) {
-        fmt.Fprintln(res, "hello, world")
-    })
-
-    err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
-    if err != nil {
-      panic(err)
-    }
+	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func GetPort() string {
