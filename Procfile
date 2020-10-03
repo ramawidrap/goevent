@@ -1,1 +1,1 @@
-web: bin/goeveent
+web: goeveent
